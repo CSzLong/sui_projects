@@ -1,0 +1,22 @@
+---
+compiled_package_info:
+  package_name: game_balances
+  address_alias_instantiation:
+    game_balances: "0000000000000000000000000000000000000000"
+    std: "0000000000000000000000000000000000000001"
+    sui: "0000000000000000000000000000000000000002"
+  source_digest: 2458E2079893665B39A64F82BADD7BC19F19D9BFEB3CC23022C83E4784974319
+  build_flags:
+    dev_mode: false
+    test_mode: false
+    generate_docs: false
+    generate_abis: false
+    install_dir: ~
+    force_recompilation: false
+    additional_named_addresses: {}
+    architecture: ~
+    fetch_deps_only: false
+    skip_fetch_latest_git_deps: false
+dependencies:
+  - MoveStdlib
+  - Sui

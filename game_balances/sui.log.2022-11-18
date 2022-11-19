@@ -1,0 +1,11 @@
+2022-11-18T12:46:52.930346Z  INFO sui::client_commands:                  Object ID                  |  Version   |                    Digest                    |   Owner Type    |               Object Type               
+2022-11-18T12:46:52.930478Z  INFO sui::client_commands: ---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+2022-11-18T12:46:52.930490Z  INFO sui::client_commands:  0x53bea30705bccbe7d4331cdfbfebeb992773eb85 |     4      | T1NZUErwqj3mhreYlxlXo3dXZzm6lwp2rJNPbBzqv3k= |  AddressOwner   |      0x2::coin::Coin<0x2::sui::SUI>     
+2022-11-18T12:46:52.930500Z  INFO sui::client_commands:  0xfbd0fbf14193e7020693f65d01fa5231cfa44402 |     1      | zx4+wwlJ2IdaL7cama8Etdk81BSs9BI3pYb0LklRYZc= |  AddressOwner   | 0xf4bf7548286b3c9dfdade62d541dd3573fbb989::record::Record
+2022-11-18T12:46:52.930508Z  INFO sui::client_commands: Showing 2 results.
+2022-11-18T12:47:28.011506Z  INFO sui::client_commands: 0x46e7b8d52a5edeb8db06a63e3415549727c00b2f
+2022-11-18T13:27:51.380291Z  INFO sui::client_commands:                  Object ID                  |  Version   |                    Digest                    |   Owner Type    |               Object Type               
+2022-11-18T13:27:51.380351Z  INFO sui::client_commands: ---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+2022-11-18T13:27:51.380357Z  INFO sui::client_commands:  0x53bea30705bccbe7d4331cdfbfebeb992773eb85 |     4      | T1NZUErwqj3mhreYlxlXo3dXZzm6lwp2rJNPbBzqv3k= |  AddressOwner   |      0x2::coin::Coin<0x2::sui::SUI>     
+2022-11-18T13:27:51.380362Z  INFO sui::client_commands:  0xfbd0fbf14193e7020693f65d01fa5231cfa44402 |     1      | zx4+wwlJ2IdaL7cama8Etdk81BSs9BI3pYb0LklRYZc= |  AddressOwner   | 0xf4bf7548286b3c9dfdade62d541dd3573fbb989::record::Record
+2022-11-18T13:27:51.380367Z  INFO sui::client_commands: Showing 2 results.
