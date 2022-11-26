@@ -10,7 +10,6 @@ module game_balances::bal{
             witness, 9, ctx));
     }
     
-
     public entry fun mint_me(cap: &mut TreasuryCap<BAL>, amount: u64, ctx: &mut TxContext) {
         transfer::transfer(coin::mint(cap, amount, ctx), sender(ctx));
     }
