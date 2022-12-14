@@ -2,6 +2,7 @@ module games::play {
     use games::flag::{Self, Flag};
     use games::gcoin::{Self, GCOIN};
     use games::record::{Self, Record};
+    use games::random::{randint};
 
     use sui::coin::{Self, Coin, TreasuryCap};
     use sui::sui::SUI;
@@ -10,6 +11,17 @@ module games::play {
     use sui::balance;
     use sui::object;
     use std::string::String;
+    use sui::event;
+    use sui::object::ID;
+
+    struct Returned has copy, drop{
+        coin_id: ID,
+        record_id: ID
+    }
+
+    struct Score has copy, drop{
+        score: u64
+    }
 
     const ErrCoin_Exist: u64 = 1003;
     const ErrNot_Enough_Coin: u64 = 1004;
@@ -21,13 +33,10 @@ module games::play {
         assert!(!flag::exists_coin<GCOIN>(flag, player), ErrCoin_Exist);
         let zero_coin = coin::zero<GCOIN>(ctx);
         let coin_id = object::id(&zero_coin);
-        //let coin_id = gcoin::mint_to_me(cap, 0, ctx);
         transfer(zero_coin, sender(ctx));
         flag::add<GCOIN>(flag, coin_id, player);
-    }
-
-    public entry fun init_record(ctx: &mut TxContext){
-        record::create(ctx);
+        let record_id = record::create(ctx);
+        event::emit(Returned{coin_id, record_id})
     }
 
     public entry fun increase_score(record: &mut Record, value: u64){
@@ -54,8 +63,12 @@ module games::play {
         coin: &mut Coin<GCOIN>,
         cap: &mut TreasuryCap<GCOIN>,
         value: u64,
+        record: &mut Record,
         ctx: &mut TxContext){
         gcoin::pay_coin(coin, cap, value, ctx);
+        let result = randint(50, ctx);
+        record::increase_score(record, result);
+        event::emit(Score{score:result})
     }
 
     public entry fun gain_coin(

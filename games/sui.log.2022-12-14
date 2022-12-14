@@ -1,0 +1,7 @@
+2022-12-14T14:28:35.923456Z  INFO sui::client_commands: Showing 5 results.
+2022-12-14T14:28:35.924182Z  INFO sui::client_commands: 0x1acbdc1fc67021188664eaf7984cc8625a6f014a
+2022-12-14T14:28:35.924186Z  INFO sui::client_commands: 0x7a4764c29586cfa571ee0b52b0c640ca9fcfde16
+2022-12-14T14:28:35.924188Z  INFO sui::client_commands: 0x938ed1707e7d11a36bf74c61ca3479dc10e528f4
+2022-12-14T14:28:35.924190Z  INFO sui::client_commands: 0xda7623dcda5922c6fa1b6f95bfaa2ca98dc8597a
+2022-12-14T14:28:35.924191Z  INFO sui::client_commands: 0xdd20848f41062555229a59c6603615239238474a
+2022-12-14T14:29:30.208796Z  INFO sui::client_commands: Active address switched to 0x1acbdc1fc67021188664eaf7984cc8625a6f014a
