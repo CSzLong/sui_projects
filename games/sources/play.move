@@ -67,9 +67,7 @@ module games::play {
         ctx: &mut TxContext){
         gcoin::pay_coin(coin, cap, value, ctx);
         let result = randint(value>>2, ctx);
-        if (value <= result){
-            gcoin::join_coin(coin, cap, result, ctx);
-        };
+        gcoin::join_coin(coin, cap, result, ctx);
         record::increase_score(record, result);
         event::emit(Score{score:result})
     }
