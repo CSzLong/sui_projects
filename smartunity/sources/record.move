@@ -1,11 +1,13 @@
-module games::record {
+module smartunity::record {
 
-    use sui::transfer;
     use sui::object::{Self, UID, ID};
+    use sui::transfer;
     use sui::tx_context::{TxContext, sender};
 
-    const ErrOverflow: u64 = 1001;
-    const ErrNotEnough: u64 = 1002;
+    friend smartunity::interface;
+
+    const ErrOverflow: u64 = 2001;
+    const ErrNotEnough: u64 = 2002;
 
     struct Record has key, store {
         id: UID,
@@ -13,18 +15,7 @@ module games::record {
         score: u64
     }
 
-    fun init(ctx: &mut TxContext) {
-        transfer::transfer(
-            Record {
-                id: object::new(ctx),
-                begin_score: 0,
-                score: 0
-            },
-            sender(ctx)
-        )
-    }
-
-    public fun create(ctx: &mut TxContext): ID {
+    public(friend) fun create(ctx: &mut TxContext): ID {
         let record = Record {
             id: object::new(ctx),
             begin_score: 0,
@@ -38,15 +29,15 @@ module games::record {
         record_id
     }
 
-    public fun increase_score(self: &mut Record, value: u64) {
+    public(friend) fun increase_score(self: &mut Record, value: u64) {
         self.score = self.score + value;
     }
 
-    spec increase_score{
+    spec increase_score {
         ensures self.score == old(self.score) + value;
     }
 
-    public fun decrease_score(self: &mut Record, value: u64) {
+    public(friend) fun decrease_score(self: &mut Record, value: u64) {
         assert!(self.score < value, ErrNotEnough);
         self.score = self.score - value;
     }
@@ -56,14 +47,11 @@ module games::record {
         ensures self.score == old(self.score) - value;
     }
 
-    public fun increate_begin_score(self: &mut Record, value: u64) {
+    public(friend) fun increate_begin_score(self: &mut Record, value: u64) {
         self.begin_score = self.begin_score + value;
     }
 
-    spec increate_begin_score{
+    spec increate_begin_score {
         ensures self.begin_score == old(self.begin_score) + value;
     }
-
-
-
 }

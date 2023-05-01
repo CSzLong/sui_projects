@@ -1,13 +1,13 @@
-module games::random {
+module smartunity::random {
     use std::hash::sha2_256;
     use std::vector;
-    use sui::tx_context::{TxContext};
-    use sui::object;
-    use sui::object::uid_to_bytes;
+
+    use sui::object::{Self, uid_to_bytes};
+    use sui::tx_context::TxContext;
 
     const EInvalidSeed: u64 = 3;
 
-    friend games::play;
+    friend smartunity::interface;
 
     public(friend) fun randint(n: u64, ctx: &mut TxContext): u64 {
         let test_id = object::new(ctx);
@@ -25,11 +25,10 @@ module games::random {
         let module_128 = m % n_128;
         let res = (module_128 as u64);
         object::delete(test_id);
-        if (res != 0){
+        if (res != 0) {
             res << 1
-        }else{
+        }else {
             1
         }
-
     }
 }

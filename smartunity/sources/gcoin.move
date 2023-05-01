@@ -1,17 +1,18 @@
-module games::gcoin {
+module smartunity::gcoin {
+
+    use std::option;
 
     use sui::coin::{Self, Coin, TreasuryCap};
     use sui::object::{Self, ID};
     use sui::transfer;
     use sui::tx_context::{TxContext, sender};
-    use std::option;
 
     struct GCOIN has drop {}
 
     const DECIMALS: u8 = 9;
-    const ErrNot_Enough_Balance: u64 = 1002;
+    const ErrNot_Enough_Balance: u64 = 2005;
 
-    friend games::play;
+    friend smartunity::interface;
 
     fun init(witness: GCOIN, ctx: &mut TxContext) {
         let (treasury, metadata) = coin::create_currency(
@@ -23,14 +24,14 @@ module games::gcoin {
             option::none(),
             ctx
         );
-        transfer::freeze_object(metadata);
-        transfer::share_object(treasury);
+        transfer::public_freeze_object(metadata);
+        transfer::public_share_object(treasury);
     }
 
     public(friend) fun mint_to_me(cap: &mut TreasuryCap<GCOIN>, amount: u64, ctx: &mut TxContext): ID {
         let coin = coin::mint(cap, amount, ctx);
         let id = object::id(&coin);
-        transfer::transfer(coin, sender(ctx));
+        transfer::public_transfer(coin, sender(ctx));
         id
     }
 
