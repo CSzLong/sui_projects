@@ -48,8 +48,8 @@ module smartunity::interface {
         record::decrease_score(record, value);
     }
 
-    public entry fun increate_begin_score(record: &mut Record, value: u64) {
-        record::increate_begin_score(record, value);
+    public entry fun increase_begin_score(record: &mut Record, value: u64) {
+        record::increase_begin_score(record, value);
     }
 
     public entry fun buy_coin(coin: &mut Coin<GCOIN>,
@@ -126,7 +126,7 @@ module smartunity::interface {
     }
 
     ///entry function Withdraw all balance in Liquidity provider from pool
-    public entry fun remove_liquidity_totally<X, Y>(pool: &mut Pool<X, Y>,
+    public entry fun withdraw_totally<X, Y>(pool: &mut Pool<X, Y>,
                                                     lp: Coin<LP<X, Y>>,
                                                     pocket: &mut Pocket,
                                                     ctx: &mut TxContext) {

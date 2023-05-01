@@ -38,16 +38,16 @@ module smartunity::record {
     }
 
     public(friend) fun decrease_score(self: &mut Record, value: u64) {
-        assert!(self.score < value, ErrNotEnough);
+        assert!(self.score >= value, ErrNotEnough);
         self.score = self.score - value;
     }
 
     spec decrease_score {
-        aborts_if self.score < value with ErrNotEnough;
+        aborts_if self.score >= value with ErrNotEnough;
         ensures self.score == old(self.score) - value;
     }
 
-    public(friend) fun increate_begin_score(self: &mut Record, value: u64) {
+    public(friend) fun increase_begin_score(self: &mut Record, value: u64) {
         self.begin_score = self.begin_score + value;
     }
 
